@@ -41,7 +41,7 @@ public class MoneyManager {
 
             return money;
         } catch (SQLException var5) {
-            Bukkit.getConsoleSender().sendMessage("§cBeim Abrufen der Daten kam es zu einem Fehler!");
+            //Bukkit.getConsoleSender().sendMessage("§cBeim Abrufen der Daten kam es zu einem Fehler!");
             return 0.0;
         }
     }

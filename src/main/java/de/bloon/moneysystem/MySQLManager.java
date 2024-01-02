@@ -31,10 +31,7 @@ public class MySQLManager {
             } catch (SQLException var1) {
                 Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cBeim Herstellen einer Verbindung mit der MySQL Datenbank gab einen Fehler: " + var1.getErrorCode());
             }
-        } else {
-            Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cDie Verbing zur MySQL Datenbank konnte nicht hergestellt werden, da bereits eine Verbing vorhanden ist!");
         }
-
     }
 
     public static void disconnect() {
@@ -45,7 +42,7 @@ public class MySQLManager {
             } catch (SQLException var1) {
                 Bukkit.getConsoleSender().sendMessage("�5MoneyManager �7>> �cBeim Schlie�en der Verbindung kam es zu einem Fehler!");
             }
-        } else {
+        } else {;
             Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cDie Verbindung  zur MySQL Datenbank konnte nich beendet werden, da keine Verbing vorhanden war!");
         }
 
@@ -121,7 +118,7 @@ public class MySQLManager {
                 var2.printStackTrace();
             }
         } else {
-            Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cDie Methode 'update' konnte nicht ausgef�hrt werden, da keine Verbindung besteht.");
+            //Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cDie Methode 'update' konnte nicht ausgef�hrt werden, da keine Verbindung besteht.");
         }
 
     }

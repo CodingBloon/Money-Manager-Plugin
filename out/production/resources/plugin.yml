@@ -2,3 +2,13 @@ name: MoneySystem
 version: '${version}'
 main: de.bloon.moneysystem.MoneySystem
 api-version: '1.16'
+
+commands:
+  money:
+    description: shows the balance of a player
+    aliases:
+      - "geld"
+  eco:
+    description: manage all player balances
+    aliases:
+      - "eco"

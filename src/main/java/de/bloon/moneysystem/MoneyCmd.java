@@ -11,31 +11,28 @@ public class MoneyCmd implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("§4Du kannst diesen Befehl nur als Spieler ausführen!");
+            sender.sendMessage(MoneySystem.PREFIX + "§4You have to be a player to execute this command!");
             return false;
         }
 
-        if(!sender.hasPermission("")) {
-            sender.sendMessage("§cIch glaube, dass solltest du nicht tun!");
-            return false;
-        }
 
         if (args.length != 1 && args.length != 0) {
-            sender.sendMessage("§aBitte nutze §6/money (<Spieler>)");
+            sender.sendMessage(MoneySystem.PREFIX + "§aPlease use §6/money (<Player>)");
             return false;
         } else {
             Player p = (Player)sender;
             if (args.length == 0) {
                 double money = MoneyManager.getMoney(p.getUniqueId());
-                p.sendMessage("§aDein Kontostand beträgt: §6" + money + "$");
+                //String msg = ;
+                p.sendMessage(MoneySystem.PREFIX + "§aYour balance: §6" + money + "$");
                 return false;
             } else if (!p.hasPermission("admin.money.other")) {
-                p.sendMessage("Ich glaube, dass solltest du nicht wissen!");
+                p.sendMessage(MoneySystem.PREFIX + "§aI think you should not know this!");
                 return false;
             } else {
                 OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
                 double money = MoneyManager.getMoney(op.getUniqueId());
-                p.sendMessage("§aDer Kontostand von " + args[0] + " beträgt: §6" + money + "§");
+                p.sendMessage("§aBalance of " + args[0] + ": §6" + money + "$");
                 return false;
             }
         }
