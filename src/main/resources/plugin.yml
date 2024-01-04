@@ -12,3 +12,8 @@ commands:
     description: manage all player balances
     aliases:
       - "eco"
+  setsql:
+    description: sets if the plugin should use a mysql database
+    aliases:
+      - "setmysql"
+      - "setusedatabase"

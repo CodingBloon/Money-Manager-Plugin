@@ -56,6 +56,7 @@ public class MySQLManager {
         cfg.addDefault("database", "localhost");
         cfg.addDefault("host", "localhost");
         cfg.addDefault("port", "3306");
+        cfg.addDefault("use.sql", true);
 
         try {
             cfg.save(getMySQLFile());
@@ -65,6 +66,17 @@ public class MySQLManager {
 
     }
 
+    public static void setUseMySQL(Boolean b) {
+        FileConfiguration cfg = getMySQLgFileConfiguration();
+        cfg.set("use.sql", b);
+
+        try {
+            cfg.save(getMySQLFile());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void readMySQL() {
         FileConfiguration cfg = getMySQLgFileConfiguration();
         username = cfg.getString("username");
@@ -72,6 +84,11 @@ public class MySQLManager {
         database = cfg.getString("database");
         host = cfg.getString("host");
         port = cfg.getString("port");
+    }
+
+    public static boolean useSQL() {
+        FileConfiguration cfg = getMySQLgFileConfiguration();
+        return cfg.getBoolean("use.sql");
     }
 
     public static void getDefaultcurrency() {
