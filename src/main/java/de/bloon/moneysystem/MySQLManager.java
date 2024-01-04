@@ -29,21 +29,22 @@ public class MySQLManager {
             try {
                 con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
             } catch (SQLException var1) {
-                Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cBeim Herstellen einer Verbindung mit der MySQL Datenbank gab einen Fehler: " + var1.getErrorCode());
+                Bukkit.getConsoleSender().sendMessage(MoneySystem.PREFIX + "§cAn error occurred while connecting to the database!");
+                //Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cBeim Herstellen einer Verbindung mit der MySQL Datenbank gab einen Fehler: " + var1.getErrorCode());
             }
         }
     }
 
-    public static void disconnect() {
+    public static boolean disconnect() {
         if (isconnect()) {
             try {
                 con.close();
-                Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �aMySQL Verbindung geschlossen!");
+                return true;
             } catch (SQLException var1) {
-                Bukkit.getConsoleSender().sendMessage("�5MoneyManager �7>> �cBeim Schlie�en der Verbindung kam es zu einem Fehler!");
+                return false;
             }
-        } else {;
-            Bukkit.getConsoleSender().sendMessage("�5MoneySystem �7>> �cDie Verbindung  zur MySQL Datenbank konnte nich beendet werden, da keine Verbing vorhanden war!");
+        } else {
+            return false;
         }
 
     }

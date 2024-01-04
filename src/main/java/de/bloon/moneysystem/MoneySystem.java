@@ -1,8 +1,10 @@
 package de.bloon.moneysystem;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.omg.CORBA.PERSIST_STORE;
+
+import javax.activation.CommandMap;
 
 public final class MoneySystem extends JavaPlugin {
 
@@ -29,6 +31,18 @@ public final class MoneySystem extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Shutting down...");
+        if(MySQLManager.useSQL()) {
+            Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Disconnecting from database...");
+            if(MySQLManager.disconnect())
+                Bukkit.getConsoleSender().sendMessage(PREFIX + "§aDisconnected from database!");
+            else Bukkit.getConsoleSender().sendMessage(PREFIX + "§cAn error occurred while closing the connection! There was probably no connection to the database.");
+        }
+
+        Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Unregistering events...");
+        HandlerList.unregisterAll();
+        Bukkit.getConsoleSender().sendMessage(PREFIX + "§aEvents unregistered!");
+        Bukkit.getConsoleSender().sendMessage(PREFIX + "§aPlugin disabled!");
         // Plugin shutdown logic
     }
 }
