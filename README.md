@@ -4,10 +4,10 @@ Money Manager is a basic money manager, which helps you to manage anything, whic
 
 # Commands & Permissions
 
-/money - no special permission required
-/money <User> - "admin.money.other"
-/eco - "admin.money"
-/setsql - "admin.money.set.sql"
+/money - no special permission required  
+/money <User> - "admin.money.other"  
+/eco - "admin.money"  
+/setsql - "admin.money.set.sql"  
 
 # Supported Versions
 1.16.4  
