@@ -14,6 +14,7 @@ public final class MoneySystem extends JavaPlugin {
         Bukkit.getPluginCommand("eco").setExecutor(new Command());
         Bukkit.getPluginCommand("money").setExecutor(new MoneyCmd());
         Bukkit.getPluginCommand("setsql").setExecutor(new SetSQL());
+        Bukkit.getPluginCommand("pay").setExecutor(new PayCommand());
         MySQLManager.setStandartMySQL();
         MySQLManager.readMySQL();
         if(MySQLManager.useSQL()) {

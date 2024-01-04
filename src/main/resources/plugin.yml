@@ -17,3 +17,8 @@ commands:
     aliases:
       - "setmysql"
       - "setusedatabase"
+  pay:
+    description: pay a player a specified amount of money
+    aliases:
+      - "pay"
+      - "bezahlen"
