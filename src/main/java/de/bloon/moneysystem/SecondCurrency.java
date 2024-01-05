@@ -41,9 +41,11 @@ public class SecondCurrency {
     }
     public void addBalance(UUID uuid, double amount) {
         double nbalance = getBalance(uuid) + amount;
+        setBalance(uuid, nbalance);
     }
     public void removeBalance(UUID uuid, double amount) {
         double nbalance = getBalance(uuid) - amount;
+        setBalance(uuid, nbalance);
     }
 
     public static double getBalance(UUID uuid) {
