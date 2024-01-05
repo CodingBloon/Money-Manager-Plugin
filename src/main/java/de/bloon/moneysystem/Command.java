@@ -11,6 +11,11 @@ public class Command implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
+
+            if(args.length == 4) {
+                return MoneySystem.secondCurrency.dispatch(sender, args);
+            }
+
             if (args.length != 3) {
                 sender.sendMessage(MoneySystem.PREFIX + "§aPlease use: §5\n/eco <User> set <Amount>\n/eco <User> add <Amount>\n/eco <User> remove <Amount>");
                 return false;
@@ -58,6 +63,11 @@ public class Command implements CommandExecutor {
             if (!p.hasPermission("admin.money")) {
                 p.sendMessage(MoneySystem.PREFIX + "§cIt is better that you can't do this!");
                 return false;
+            }
+
+
+            if(args.length == 4) {
+                return MoneySystem.secondCurrency.dispatch(sender, args);
             }
 
             if (args.length != 3) {

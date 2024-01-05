@@ -15,6 +15,23 @@ public class MoneyCmd implements CommandExecutor {
             return false;
         }
 
+        if(args.length == 2) {
+            Player p = (Player)sender;
+            if (args.length == 0) {
+                double money = MoneySystem.secondCurrency.getBalance(p.getUniqueId());
+                //String msg = ;
+                p.sendMessage(MoneySystem.PREFIX + "§aYour balance: §6" + money + " " + MoneySystem.secondCurrency.getName());
+                return false;
+            } else if (!p.hasPermission("admin.money.other")) {
+                p.sendMessage(MoneySystem.PREFIX + "§aI think you should not know this!");
+                return false;
+            } else {
+                OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
+                double money = MoneySystem.secondCurrency.getBalance(op.getUniqueId());
+                p.sendMessage("§aBalance of " + args[0] + ": §6" + money + " " + MoneySystem.secondCurrency.getName());
+                return false;
+            }
+        }
 
         if (args.length != 1 && args.length != 0) {
             sender.sendMessage(MoneySystem.PREFIX + "§aPlease use §6/money (<Player>)");

@@ -9,9 +9,11 @@ import javax.activation.CommandMap;
 public final class MoneySystem extends JavaPlugin {
 
     public static String PREFIX = "§6Money§aManager §7 >> ";
+    public static SecondCurrency secondCurrency;
 
     @Override
     public void onEnable() {
+        secondCurrency = new SecondCurrency("Gold");
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Starting up...");
         Bukkit.getPluginCommand("eco").setExecutor(new Command());
         Bukkit.getPluginCommand("money").setExecutor(new MoneyCmd());

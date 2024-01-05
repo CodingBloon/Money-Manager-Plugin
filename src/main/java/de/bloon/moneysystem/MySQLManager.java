@@ -122,6 +122,7 @@ public class MySQLManager {
     public static void createTable() {
         try {
             con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS MONEY (UUID varchar(100), Geld varchar(100))");
+            con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS SecondCurrency (UUID varchar(100), Geld varchar(100))");
         } catch (SQLException var1) {
             var1.printStackTrace();
         }
