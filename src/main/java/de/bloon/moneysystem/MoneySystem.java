@@ -13,12 +13,14 @@ public final class MoneySystem extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        secondCurrency = new SecondCurrency("Gold");
+        SecondCurrency.setDefault();
+        secondCurrency = new SecondCurrency(SecondCurrency.getNameFromFile());
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Starting up...");
         Bukkit.getPluginCommand("eco").setExecutor(new Command());
         Bukkit.getPluginCommand("money").setExecutor(new MoneyCmd());
         Bukkit.getPluginCommand("setsql").setExecutor(new SetSQL());
         Bukkit.getPluginCommand("pay").setExecutor(new PayCommand());
+        Bukkit.getPluginCommand("setname").setExecutor(new SetCurrencyName());
         MySQLManager.setStandartMySQL();
         MySQLManager.readMySQL();
         if(MySQLManager.useSQL()) {

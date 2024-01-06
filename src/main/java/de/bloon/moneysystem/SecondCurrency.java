@@ -22,6 +22,26 @@ public class SecondCurrency {
         return name;
     }
 
+    public static void setDefault() {
+        FileConfiguration cfg = YamlConfiguration.loadConfiguration(new File("plugins\\MoneySystem\\", "players.yml"));
+        cfg.options().copyDefaults(true);
+        cfg.addDefault("secondCurrency.name", "Gold");
+        try {
+            cfg.save(new File("plugins\\MoneySystem\\", "players.yml"));
+        } catch (Exception e) {}
+    }
+    public static String getNameFromFile() {
+        FileConfiguration cfg = YamlConfiguration.loadConfiguration(new File("plugins\\MoneySystem\\", "players.yml"));
+        return cfg.getString("secondCurrency.name");
+    }
+    public static void setCurrencyName(String name) {
+        FileConfiguration cfg = YamlConfiguration.loadConfiguration(new File("plugins\\MoneySystem\\", "players.yml"));
+        cfg.set("secondCurrency.name", name);
+        try {
+            cfg.save(new File("plugins\\MoneySystem\\", "players.yml"));
+        } catch (Exception e) {}
+    }
+
     public void setBalance(UUID uuid, double amount) {
         if(MySQLManager.useSQL()) {
             if (exists(uuid)) {
@@ -31,7 +51,7 @@ public class SecondCurrency {
             }
         } else {
             FileConfiguration cfg = YamlConfiguration.loadConfiguration(new File("plugins\\MoneySystem\\", "players.yml"));
-            cfg.set("secondCurrency." + uuid.toString(), amount);
+            cfg.set("c." + uuid.toString(), amount);
             try {
                 cfg.save(getFile());
             } catch (Exception e) {

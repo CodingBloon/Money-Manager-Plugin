@@ -36,23 +36,29 @@ public class MoneyCmd implements CommandExecutor {
         if (args.length != 1 && args.length != 0) {
             sender.sendMessage(MoneySystem.PREFIX + "§aPlease use §6/money (<Player>)");
             return false;
-        } else {
-            Player p = (Player)sender;
-            if (args.length == 0) {
-                double money = MoneyManager.getMoney(p.getUniqueId());
-                //String msg = ;
-                p.sendMessage(MoneySystem.PREFIX + "§aYour balance: §6" + money + "$");
-                return false;
-            } else if (!p.hasPermission("admin.money.other")) {
-                p.sendMessage(MoneySystem.PREFIX + "§aI think you should not know this!");
-                return false;
-            } else {
-                OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
-                double money = MoneyManager.getMoney(op.getUniqueId());
-                p.sendMessage("§aBalance of " + args[0] + ": §6" + money + "$");
-                return false;
-            }
         }
+        Player p = (Player)sender;
+        if (args.length == 0) {
+            double money = MoneyManager.getMoney(p.getUniqueId());
+            //String msg = ;
+            p.sendMessage(MoneySystem.PREFIX + "§aYour balance: §6" + money + "$");
+            return false;
+        }
+
+        if(args[0].equalsIgnoreCase("-s")) {
+            double money = MoneySystem.secondCurrency.getBalance(p.getUniqueId());
+            p.sendMessage("§aYour balance: §6" + money + " " + MoneySystem.secondCurrency.getName());
+            return false;
+        }
+
+        if (!p.hasPermission("admin.money.other")) {
+            p.sendMessage(MoneySystem.PREFIX + "§aI think you should not know this!");
+            return false;
+        }
+        OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
+        double money = MoneyManager.getMoney(op.getUniqueId());
+        p.sendMessage("§aBalance of " + args[0] + ": §6" + money + "$");
+        return false;
     }
 
 }
