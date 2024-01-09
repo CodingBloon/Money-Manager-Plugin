@@ -16,6 +16,10 @@ public class SetSQL implements CommandExecutor {
 
             String parse = args[0];
             try {
+                if(!parse.equalsIgnoreCase("true") && !parse.equalsIgnoreCase("false")) {
+                    sender.sendMessage(MoneySystem.PREFIX + "§4Please enter 'TRUE' or 'FALSE'");
+                    return false;
+                }
                 Boolean result = Boolean.parseBoolean(parse);
                 MySQLManager.setUseMySQL(result);
                 if(result) {
@@ -46,6 +50,10 @@ public class SetSQL implements CommandExecutor {
 
         String parse = args[0];
         try {
+            if(!parse.equalsIgnoreCase("true") && !parse.equalsIgnoreCase("false")) {
+                sender.sendMessage(MoneySystem.PREFIX + "§4Please enter 'TRUE' or 'FALSE'");
+                return false;
+            }
             Boolean result = Boolean.parseBoolean(parse);
             MySQLManager.setUseMySQL(result);
             if(result) {

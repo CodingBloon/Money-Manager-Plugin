@@ -9,10 +9,12 @@ import javax.activation.CommandMap;
 public final class MoneySystem extends JavaPlugin {
 
     public static String PREFIX = "§6Money§aManager §7 >> ";
+    public static PayOrderManager payOrderManager;
     public static SecondCurrency secondCurrency;
 
     @Override
     public void onEnable() {
+        payOrderManager = new PayOrderManager();
         SecondCurrency.setDefault();
         secondCurrency = new SecondCurrency(SecondCurrency.getNameFromFile());
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§6Starting up...");

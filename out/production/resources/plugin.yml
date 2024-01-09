@@ -22,3 +22,7 @@ commands:
     aliases:
       - "pay"
       - "bezahlen"
+  setname:
+    description: changes the name of the secondary currency
+    aliases:
+      - "setzename"

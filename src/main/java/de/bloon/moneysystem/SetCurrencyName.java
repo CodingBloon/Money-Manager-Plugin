@@ -10,7 +10,7 @@ public class SetCurrencyName implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)) {
             if(args.length != 1) {
-                sender.sendMessage("§bBitte nutze /setname <Name>");
+                sender.sendMessage(MoneySystem.PREFIX + "§bPlease use /setname <Name>");
             }
 
             SecondCurrency.setCurrencyName(args[0]);
@@ -26,7 +26,7 @@ public class SetCurrencyName implements CommandExecutor {
         }
 
         if(args.length != 1) {
-            sender.sendMessage("§bBitte nutze /setname <Name>");
+            sender.sendMessage(MoneySystem.PREFIX + "§bPlease use /setname <Name>");
             return false;
         }
 
