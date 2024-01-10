@@ -47,6 +47,11 @@ public class PayOrderManager {
         orders.remove(order);
     }
 
+    public void cancelOrder(Player creator) {
+        PayOrder order = getOrder(creator);
+        orders.remove(order);
+    }
+
     public void createOrder(Player creator, OfflinePlayer target, double amount) {
         addOrder(new PayOrder(creator, target.getPlayer(), amount));
     }

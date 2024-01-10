@@ -33,6 +33,17 @@ public class PayCommand implements CommandExecutor {
                 p.sendMessage(MoneySystem.PREFIX + "§aPayment confirmed!");
                 return false;
             }
+
+            if(args[0].equalsIgnoreCase("cancel")) {
+                if(!MoneySystem.payOrderManager.hasPlayerOrders(p)) {
+                    p.sendMessage(MoneySystem.PREFIX + "§cYou don't have open payment confirmations!");
+                    return false;
+                }
+
+                MoneySystem.payOrderManager.cancelOrder(p);
+                p.sendMessage(MoneySystem.PREFIX + "§aPayment canceled!");
+                return false;
+            }
         }
 
         if(args.length != 2) {
@@ -89,7 +100,23 @@ public class PayCommand implements CommandExecutor {
 
             if(amount >= 250000D) {
                 MoneySystem.payOrderManager.createOrder(p, Bukkit.getOfflinePlayer(target.getUniqueId()), amount);
-                p.sendMessage(MoneySystem.PREFIX + "§4Please confirm payment with §b/pay confirm§4!");
+                StringBuilder information = new StringBuilder();
+                double a = amount / 1000;
+                if(amount > 1000000)
+                    a = amount / 1000000;
+                information.append("§6-------------------- §cPayment Confirmation §6--------------------")
+                        .append("§6Receiver: " + target.getName()).append("\n");
+
+                if(amount > 1000000)
+                    information.append("§6Amount: " + a + "M $").append("\n");
+                else information.append("Amount: " + a + "K $").append("\n");
+
+                information.append("§6-------------------- §cPayment Confirmation §6--------------------").append("\n")
+                                .append("§6Use §a/pay confirm to §2confirm §apayment").append("\n")
+                                .append("§6Use §c/pay cancel to §4cancel §cpayment").append("\n")
+                                .append("§6-------------------- §cPayment Confirmation §6--------------------");
+
+                p.sendMessage(information.toString());
                 return false;
             }
 
