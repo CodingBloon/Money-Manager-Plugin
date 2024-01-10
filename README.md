@@ -7,7 +7,8 @@ Money Manager is a basic money manager, which helps you to manage anything, whic
 /money - no special permission required  
 /money <User> - "admin.money.other"  
 /eco - "admin.money"  
-/setsql - "admin.money.set.sql"  
+/setsql - "admin.money.set.sql"    
+/pay * - "admin.money.pay.all"
 
 # Supported Versions
 1.16.4  
