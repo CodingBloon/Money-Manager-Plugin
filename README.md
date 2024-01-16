@@ -8,7 +8,7 @@ Money Manager is a basic money manager, which helps you to manage anything, whic
 /money <User> - "admin.money.other"  
 /eco - "admin.money"  
 /setsql - "admin.money.set.sql"    
-/pay * - "admin.money.pay.all"
+/pay * - "admin.money.pay.all"  
 /pluginrestart - "admin.money.restart"
 
 # Supported Versions
