@@ -51,10 +51,24 @@ public class PayCommand implements CommandExecutor {
             return false;
         }
 
+        if(MoneySystem.cooldown.containsKey(p)) {
+            if(MoneySystem.cooldown.get(p) > System.currentTimeMillis()) {
+                p.sendMessage(MoneySystem.PREFIX + "§cThis command is on cooldown! Please wait");
+                return false;
+            }
+        }
+
+        if(!MoneySystem.cooldown.containsKey(p))
+            MoneySystem.cooldown.put(p, System.currentTimeMillis() + 5000);
+        else MoneySystem.cooldown.replace(p, System.currentTimeMillis() + 5000);
+
         if(args[0].equalsIgnoreCase("*")) {
             if(!p.hasPermission("admin.money.pay.all")) {
                 p.sendMessage(MoneySystem.PREFIX + "§cSorry, you can't do this!");
+                return false;
             }
+
+
 
             Collection<? extends Player> playerlist = Bukkit.getOnlinePlayers();
 

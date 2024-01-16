@@ -23,11 +23,11 @@ public class SetSQL implements CommandExecutor {
                 Boolean result = Boolean.parseBoolean(parse);
                 MySQLManager.setUseMySQL(result);
                 if(result) {
-                    sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will now use a mysql database");
+                    sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will now use a mysql database\n§6You have to restart the plugin to apply this change.");
                     MySQLManager.ConnecttoDataBase();
                     MySQLManager.createTable();
                 } else {
-                    sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will no longer use a mysql database");
+                    sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will no longer use a mysql database\n§6You have to restart the plugin to apply this change.");
                 }
             } catch (Exception e) {
                 sender.sendMessage(MoneySystem.PREFIX + "§4Please enter 'FALSE' OR 'TRUE'!");
@@ -57,11 +57,11 @@ public class SetSQL implements CommandExecutor {
             Boolean result = Boolean.parseBoolean(parse);
             MySQLManager.setUseMySQL(result);
             if(result) {
-                sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will now use a mysql database");
+                sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will now use a mysql database.\n§6You have to restart the plugin to apply this change.");
                 MySQLManager.ConnecttoDataBase();
                 MySQLManager.createTable();
             } else {
-                sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will no longer use a mysql database");
+                sender.sendMessage(MoneySystem.PREFIX + "§bMoneyManager will no longer use a mysql database\n§6You have to restart the plugin to apply this change.");
             }
         } catch (Exception e) {
             sender.sendMessage(MoneySystem.PREFIX + "§4Please enter 'FALSE' OR 'TRUE'!");

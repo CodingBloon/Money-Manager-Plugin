@@ -39,6 +39,7 @@ public class MySQLManager {
         if (isconnect()) {
             try {
                 con.close();
+                con = null;
                 return true;
             } catch (SQLException var1) {
                 return false;

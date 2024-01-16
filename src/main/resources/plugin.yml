@@ -26,3 +26,7 @@ commands:
     description: changes the name of the secondary currency
     aliases:
       - "setzename"
+  pluginrestart:
+    description: restarts the plugin
+    aliases:
+      - "restartplugin"
